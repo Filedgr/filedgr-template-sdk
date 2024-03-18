@@ -1,0 +1,18 @@
+{
+  "name": "digicert",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sagargajare",
+  "license": "ISC",
+  "devDependencies": {
+    "microbundle": "^0.15.1",
+    "typescript": "^5.4.2"
+  },
+  "dependencies": {
+    "isomorphic-unfetch": "^4.0.2"
+  }
+}
