@@ -7,9 +7,6 @@ node_modules/
 # Ignore any npm logs
 npm-debug.log*
 
-# Ignore any local TypeScript compiler configuration
-tsconfig.json
-
 # Ignore any IDE or editor specific files
 .vscode/
 .idea/
