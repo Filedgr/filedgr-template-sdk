@@ -1,5 +1,9 @@
 import { BaseAsync } from './base'
-import { GetDataAttachmentResponse, TokenAttachmentInp, TokenAttachmentResponse } from './types'
+import {
+  GetDataAttachmentResponse,
+  TokenAttachmentInp,
+  TokenAttachmentResponse,
+} from './types'
 
 export class DigiCert extends BaseAsync {
   async getDataAttachment(
@@ -7,7 +11,7 @@ export class DigiCert extends BaseAsync {
   ): Promise<GetDataAttachmentResponse> {
     return this.request<GetDataAttachmentResponse>(
       `/attachments/${dataAttachmentId}`
-    );
+    )
   }
 
   async getTokensAttachment({
@@ -20,8 +24,6 @@ export class DigiCert extends BaseAsync {
         page_size: pageSize,
         page: page,
       })}`
-    );
+    )
   }
 }
-
-

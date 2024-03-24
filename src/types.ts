@@ -1,13 +1,13 @@
 export type DataAttachmentStatus =
-  | "UPLOAD_PENDING"
-  | "REPLICATION_PENDING"
-  | "ATTACHED";
+  | 'UPLOAD_PENDING'
+  | 'REPLICATION_PENDING'
+  | 'ATTACHED'
 export type FileAttachmentStatus =
-  | "UPLOAD_PENDING"
-  | "REPLICATION_PENDING"
-  | "ATTACHED";
-export type Ledgers = "XRPL";
-export type TokenStatus = "SUBMITTED" | "CREATED" | "MINTED";
+  | 'UPLOAD_PENDING'
+  | 'REPLICATION_PENDING'
+  | 'ATTACHED'
+export type Ledgers = 'XRPL'
+export type TokenStatus = 'SUBMITTED' | 'CREATED' | 'MINTED'
 
 export interface GetDataAttachmentResponse {
   id: string
@@ -25,46 +25,46 @@ export interface GetDataAttachmentResponse {
 }
 
 export interface TokenAttachmentResponse {
-  total_records: number;
-  current_page: number;
-  total_pages: number;
-  content: GetDataAttachmentResponse[];
+  total_records: number
+  current_page: number
+  total_pages: number
+  content: GetDataAttachmentResponse[]
 }
 
 export interface FileDto {
-  id: string;
-  filename: string;
-  mimetype: string;
-  created_at: string;
-  status: FileAttachmentStatus;
-  hash?: string | null;
-  size: number;
-  cid?: string | null;
+  id: string
+  filename: string
+  mimetype: string
+  created_at: string
+  status: FileAttachmentStatus
+  hash?: string | null
+  size: number
+  cid?: string | null
 }
 
 export interface TokenDto {
-  id: string;
-  created_at: string;
-  asset_code: string;
-  description?: string | null;
-  ledger: Ledgers;
-  status: TokenStatus;
-  issuer_wallet?: string | null;
-  mapping?: string | null;
+  id: string
+  created_at: string
+  asset_code: string
+  description?: string | null
+  ledger: Ledgers
+  status: TokenStatus
+  issuer_wallet?: string | null
+  mapping?: string | null
 }
 
 export interface HTTPValidationError {
-  detail: ValidationError[];
+  detail: ValidationError[]
 }
 
 export interface ValidationError {
-  loc: (string | number)[];
-  msg: string;
-  type: string;
+  loc: (string | number)[]
+  msg: string
+  type: string
 }
 
 export interface TokenAttachmentInp {
-  tokenCode: string;
-  pageSize?: string;
-  page?: string;
+  tokenCode: string
+  pageSize?: string
+  page?: string
 }

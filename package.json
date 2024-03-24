@@ -8,15 +8,23 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "rm -rf dist && microbundle --tsconfig tsconfig.json --no-sourcemap",
-    "dev": "nodemon -e js,ts --watch src --exec \"npm run build\""
+    "dev": "nodemon -e js,ts --watch src --exec \"npm run build\"",
+    "format:fix": "prettier --write 'src/**/*.ts'"
   },
   "author": "sagargajare",
   "license": "ISC",
   "devDependencies": {
+    "husky": "^4.3.8",
     "microbundle": "^0.15.1",
+    "prettier": "^3.2.5",
     "typescript": "^5.4.2"
   },
   "dependencies": {
     "isomorphic-unfetch": "^4.0.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run format:fix && git add -A ."
+    }
   }
 }
