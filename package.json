@@ -9,14 +9,18 @@
   "scripts": {
     "build": "rm -rf dist && microbundle --tsconfig tsconfig.json --no-sourcemap",
     "dev": "nodemon -e js,ts --watch src --exec \"npm run build\"",
-    "format:fix": "prettier --write 'src/**/*.ts'"
+    "format:fix": "prettier --write './**/*.ts'",
+    "test": "env NODE_ENV=test jest"
   },
   "author": "sagargajare",
   "license": "ISC",
   "devDependencies": {
+    "@types/jest": "^29.5.12",
     "husky": "^4.3.8",
+    "jest": "^29.7.0",
     "microbundle": "^0.15.1",
     "prettier": "^3.2.5",
+    "ts-jest": "^29.1.2",
     "typescript": "^5.4.2"
   },
   "dependencies": {
