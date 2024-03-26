@@ -1,5 +1,5 @@
 {
-  "name": "digicert",
+  "name": "digicert-sdk",
   "version": "0.0.0-development",
   "description": "",
   "main": "dist/index.js",
@@ -45,10 +45,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Filedgr/filedgr-npm-digicert-sdk.git"
+    "url": "git+https://github.com/Filedgr/filedgr-npm-digicert-sdk.git"
   },
   "publishConfig": {
-    "access": "restricted"
+    "access": "public"
   },
   "config": {
     "commitizen": {
