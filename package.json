@@ -1,6 +1,6 @@
 {
   "name": "digicert",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "",
   "main": "dist/index.js",
   "module": "dist/index.m.js",
@@ -11,7 +11,8 @@
     "dev": "nodemon -e js,ts --watch src --exec \"npm run build\"",
     "format:fix": "prettier --write './**/*.ts'",
     "test": "env NODE_ENV=test jest",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "semantic-release": "semantic-release --branches main"
   },
   "author": "sagargajare",
   "license": "ISC",
@@ -23,7 +24,8 @@
     "microbundle": "^0.15.1",
     "prettier": "^3.2.5",
     "ts-jest": "^29.1.2",
-    "typescript": "^5.4.2"
+    "typescript": "^5.4.2",
+    "semantic-release": "^23.0.6"
   },
   "dependencies": {
     "isomorphic-unfetch": "^4.0.2"
@@ -38,5 +40,12 @@
       "prettier --write",
       "git add"
     ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Filedgr/filedgr-npm-digicert-sdk.git"
+  },
+  "publishConfig": {
+    "access": "restricted"
   }
 }
