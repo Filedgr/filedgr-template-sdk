@@ -54,5 +54,12 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "bugs": {
+    "url": "https://github.com/Filedgr/filedgr-npm-digicert-sdk/issues"
+  },
+  "homepage": "https://github.com/Filedgr/filedgr-npm-digicert-sdk#readme",
+  "directories": {
+    "test": "test"
   }
 }
