@@ -1,7 +1,7 @@
 {
-  "name": "digicert-sdk",
-  "version": "0.0.0-development",
-  "description": "",
+  "name": "filedgr-digicert-sdk",
+  "version": "0.1.0",
+  "description": "SDK to allow simple access to Filedgr attested data packages to be rendered in a filedgr digital certificate",
   "main": "dist/index.js",
   "module": "dist/index.m.js",
   "unpkg": "dist/index.umd.js",
@@ -15,8 +15,8 @@
     "commit": "git-cz",
     "semantic-release": "semantic-release --branches main"
   },
-  "author": "sagargajare",
-  "license": "ISC",
+  "author": "Filedgr",
+  "license": "MIT",
   "devDependencies": {
     "@types/jest": "^29.5.12",
     "cz-conventional-changelog": "^3.3.0",
