@@ -1,1 +1,1 @@
-# @filedgr/filedgr-digicert-sd
+# @filedgr/filedgr-digicert-sdk
