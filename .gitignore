@@ -1,5 +1,5 @@
 # Ignore compiled JavaScript files
-/dist/
+dist
 
 # Ignore node_modules directory
 node_modules/
