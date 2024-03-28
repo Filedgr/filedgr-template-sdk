@@ -18,6 +18,9 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        
+      - name: build
+        run: npm run build
 
       - name: Semantic Release Dry Run
         run: npm run semantic-release --dry-run
