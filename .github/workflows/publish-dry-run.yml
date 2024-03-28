@@ -14,10 +14,10 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '18'
 
       - name: Install dependencies
         run: npm install
 
       - name: Semantic Release Dry Run
-        run: npx semantic-release --dry-run
+        run: npm run semantic-release --dry-run
