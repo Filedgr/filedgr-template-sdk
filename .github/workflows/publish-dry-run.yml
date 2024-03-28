@@ -21,3 +21,6 @@ jobs:
 
       - name: Semantic Release Dry Run
         run: npm run semantic-release --dry-run
+        env: 
+            NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+            GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
