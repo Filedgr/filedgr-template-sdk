@@ -35,7 +35,7 @@
     "typescript": "^5.4.2"
   },
   "dependencies": {
-    "isomorphic-unfetch": "^4.0.2"
+    "cross-fetch": "^4.0.0"
   },
   "husky": {
     "hooks": {
