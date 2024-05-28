@@ -12,10 +12,12 @@ export type TokenStatus = 'SUBMITTED' | 'CREATED' | 'MINTED'
 export interface GetDataAttachmentResponse {
   id: string
   created_at: string
+  name: string
+  description?: string | null
   status: DataAttachmentStatus
   presigned_url?: string | null
   token_id: string
-  filename: string
+  filename?: string
   tx_hash?: string | null
   upload_as_zip: boolean
   size?: number | null
