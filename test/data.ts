@@ -6,6 +6,7 @@ import {
 const dataAttachmentData: GetDataAttachmentResponse = {
   id: 'f9c5cec5-cfb3-43d3-953b-796e185de0f2',
   created_at: '2024-03-19T17:38:11.548916',
+  name: 'Car Name',
   status: 'ATTACHED',
   presigned_url: '',
   token_id: '02f01ed5-c6b2-4faa-bcd5-4e99159d7619',
@@ -55,6 +56,7 @@ const tokenAttachmentData: TokenAttachmentResponse = {
   content: [
     {
       id: 'f9c5cec5-cfb3-43d3-953b-796e185de0f2',
+      name: 'Car Name',
       created_at: '2024-03-19T17:38:11.548916',
       status: 'ATTACHED',
       presigned_url: '',
@@ -101,6 +103,8 @@ const tokenAttachmentData: TokenAttachmentResponse = {
     {
       id: 'a2a0e681-aa63-41f2-ae4d-2a553eee398e',
       created_at: '2024-03-19T17:37:44.675676',
+      name: 'Car Name',
+      description: 'A car transaction token',
       status: 'ATTACHED',
       presigned_url: '',
       token_id: '02f01ed5-c6b2-4faa-bcd5-4e99159d7619',
@@ -146,6 +150,7 @@ const tokenAttachmentData: TokenAttachmentResponse = {
     {
       id: '6aba08dd-7404-4cae-b6fb-d123fdd8f1e4',
       created_at: '2024-03-19T17:09:48.832977',
+      name: 'Car Name',
       status: 'ATTACHED',
       presigned_url: '',
       token_id: '02f01ed5-c6b2-4faa-bcd5-4e99159d7619',
@@ -191,6 +196,7 @@ const tokenAttachmentData: TokenAttachmentResponse = {
     {
       id: '6a50f8f0-d289-4198-ad09-a6eb2c8b9d80',
       created_at: '2024-03-19T17:05:49.072341',
+      name: 'Car Name',
       status: 'ATTACHED',
       presigned_url: '',
       token_id: '02f01ed5-c6b2-4faa-bcd5-4e99159d7619',
@@ -236,6 +242,7 @@ const tokenAttachmentData: TokenAttachmentResponse = {
     {
       id: 'b03ba131-12c2-4794-8152-f69d73fc0b62',
       created_at: '2024-03-19T16:53:45.537928',
+      name: 'Car Name',
       status: 'ATTACHED',
       presigned_url: '',
       token_id: '02f01ed5-c6b2-4faa-bcd5-4e99159d7619',
@@ -281,6 +288,7 @@ const tokenAttachmentData: TokenAttachmentResponse = {
     {
       id: 'dd77c3de-220a-4a85-b687-28ce27e9ab48',
       created_at: '2024-02-27T10:45:30.762170',
+      name: 'Car Name',
       status: 'ATTACHED',
       presigned_url: '',
       token_id: '02f01ed5-c6b2-4faa-bcd5-4e99159d7619',
@@ -327,6 +335,7 @@ const tokenAttachmentData: TokenAttachmentResponse = {
     {
       id: '0bb1ab5a-e090-4ffe-9279-678e7deb0944',
       created_at: '2024-02-27T09:45:23.579104',
+      name: 'Car Name',
       status: 'ATTACHED',
       presigned_url: '',
       token_id: '02f01ed5-c6b2-4faa-bcd5-4e99159d7619',
