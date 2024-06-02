@@ -1,3 +1,3 @@
-const API_URL: string = 'https://digicert-api.dev.filedgr.com'
+const API_URL: string = 'https://digicert-api.dev.filedgr.network'
 
 export { API_URL }
