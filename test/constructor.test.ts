@@ -14,7 +14,7 @@ describe('Constructor Argument Check', () => {
   test('Default API Check', async () => {
     const client = new DigiCertApi({ bearerToken: '' })
 
-    const DefaultAPI = 'https://digicert-api.dev.filedgr.com'
+    const DefaultAPI = 'https://digicert-api.dev.filedgr.network'
 
     expect(client.baseUrl).toBe(DefaultAPI)
   })
