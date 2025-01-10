@@ -1,6 +1,6 @@
 {
   "name": "@filedgr/filedgr-digicert-sdk",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "SDK to allow simple access to Filedgr attested data packages to be rendered in a filedgr digital certificate",
   "main": "dist/index.js",
   "module": "dist/index.m.js",

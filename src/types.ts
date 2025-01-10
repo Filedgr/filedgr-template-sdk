@@ -1,13 +1,31 @@
 export type DataAttachmentStatus =
-  | 'UPLOAD_PENDING'
-  | 'REPLICATION_PENDING'
-  | 'ATTACHED'
+  | 'FILEDGR_RECEIVED'
+  | 'FILEDGR_REVIEWED'
+  | 'FILEDGR_UPLOADED'
+  | 'DCSTORAGE_REPLICATED'
+  | 'FILEDGR_DATA_ATTACHMENT_COMPLETED'
+
 export type FileAttachmentStatus =
-  | 'UPLOAD_PENDING'
-  | 'REPLICATION_PENDING'
-  | 'ATTACHED'
-export type Ledgers = 'XRPL'
-export type TokenStatus = 'SUBMITTED' | 'CREATED' | 'MINTED'
+  | 'FILEDGR_RECEIVED'
+  | 'FILEDGR_REVIEWED'
+  | 'FILEDGR_UPLOADED'
+  | 'DCSTORAGE_REPLICATED'
+  | 'FILEDGR_DATA_ATTACHMENT_COMPLETED'
+
+export type NetworkServerNames = 'POLYGON_ZKEVM' | 'XRPL' | 'ETHEREUM'
+
+export type StreamStatus =
+  | 'FILEDGR_RECEIVED'
+  | 'FILEDGR_REVIEWED'
+  | 'DLT_STREAM_ID_REQUESTED'
+  | 'DLT_MINTED'
+  | 'FILEDGR_STREAM_COMPLETED'
+
+export interface StreamProgressStep {
+  step: number
+  status: StreamStatus
+  completed_at: string | null
+}
 
 export interface GetDataAttachmentResponse {
   id: string
@@ -21,12 +39,18 @@ export interface GetDataAttachmentResponse {
   tx_hash?: string | null
   upload_as_zip: boolean
   size?: number | null
-  token: TokenDto | null
+  stream: StreamDto | null
   files: FileDto[] | null
   file_count: number
+  config?: {
+    is_permissioned: boolean
+    is_searchable: boolean
+    is_ai_ready: boolean
+    short_url: string | null
+  }
 }
 
-export interface TokenAttachmentResponse {
+export interface StreamAttachmentResponse {
   total_records: number
   current_page: number
   total_pages: number
@@ -39,20 +63,24 @@ export interface FileDto {
   mimetype: string
   created_at: string
   status: FileAttachmentStatus
-  hash?: string | null
+  hash: string
   size: number
-  cid?: string | null
+  cid: string
 }
 
-export interface TokenDto {
+export interface StreamDto {
   id: string
   created_at: string
-  asset_code: string
-  description?: string | null
-  ledger: Ledgers
-  status: TokenStatus
-  issuer_wallet?: string | null
-  mapping?: string | null
+  asset_code: string | null
+  description: string
+  ledger: NetworkServerNames
+  tx_hash: string | null
+  status: StreamStatus
+  issuer: string | null
+  distribution_wallet: string | null
+  mapping: string
+  metadata_cid: string | null
+  progress: StreamProgressStep[]
 }
 
 export interface HTTPValidationError {
@@ -65,7 +93,7 @@ export interface ValidationError {
   type: string
 }
 
-export interface TokenAttachmentInp {
+export interface StreamAttachmentInput {
   tokenCode: string
   pageSize?: string
   page?: string

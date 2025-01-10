@@ -1,9 +1,10 @@
 import fetch from 'cross-fetch'
-import { API_URL } from './constants'
+import { API_URLS, DEFAULT_ENV, Environment } from './constants'
 
 type Config = {
   bearerToken: string
   baseUrl?: string
+  environment?: Environment
 }
 
 export abstract class BaseAsync {
@@ -12,7 +13,14 @@ export abstract class BaseAsync {
 
   constructor(config: Config) {
     this.bearerToken = config.bearerToken
-    this.baseUrl = config.baseUrl || API_URL
+
+    if (config.baseUrl) {
+      this.baseUrl = config.baseUrl
+    } else if (config.environment) {
+      this.baseUrl = API_URLS[config.environment]
+    } else {
+      this.baseUrl = API_URLS[DEFAULT_ENV]
+    }
   }
 
   protected async request<T>(

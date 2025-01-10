@@ -1,10 +1,10 @@
 import DigiCertApi from '../src/index'
-import { tokenAttachmentData } from './data'
+import { streamAttachmentData } from './data'
 
 describe('DigiCert SDK', () => {
   describe('getTokensAttachment', () => {
     it('should fetch token attachments with the given token code, page size, and page number', async () => {
-      const expectedData = tokenAttachmentData
+      const expectedData = streamAttachmentData
 
       jest
         .spyOn(DigiCertApi.prototype, 'getTokensAttachment')
