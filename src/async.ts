@@ -1,8 +1,8 @@
 import { BaseAsync } from './base'
 import {
   GetDataAttachmentResponse,
-  TokenAttachmentInp,
-  TokenAttachmentResponse,
+  StreamAttachmentInput,
+  StreamAttachmentResponse,
 } from './types'
 
 export class DigiCert extends BaseAsync {
@@ -15,12 +15,12 @@ export class DigiCert extends BaseAsync {
   }
 
   async getTokensAttachment({
-    tokenCode,
+    tokenCode: streamCode,
     page = '1',
     pageSize = '10',
-  }: TokenAttachmentInp): Promise<TokenAttachmentResponse> {
-    return this.request<TokenAttachmentResponse>(
-      `/tokens/${tokenCode}/attachments?${new URLSearchParams({
+  }: StreamAttachmentInput): Promise<StreamAttachmentResponse> {
+    return this.request<StreamAttachmentResponse>(
+      `/streams/${streamCode}/attachments?${new URLSearchParams({
         page_size: pageSize,
         page: page,
       })}`
