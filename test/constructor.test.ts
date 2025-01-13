@@ -1,10 +1,10 @@
 import { API_URLS, Environment } from '../src/constants'
-import DigiCertApi from '../src/index'
+import FiledGrTemplateSDKApi from '../src/index'
 
 describe('Constructor Argument Check', () => {
   test('Authorization Token Check', async () => {
     try {
-      const client = new DigiCertApi({ bearerToken: '' })
+      const client = new FiledGrTemplateSDKApi({ bearerToken: '' })
       await client.getDataAttachment('dc')
       expect(true).toBe(false)
     } catch (error) {
@@ -13,24 +13,24 @@ describe('Constructor Argument Check', () => {
   })
 
   test('Default API Check', () => {
-    const client = new DigiCertApi({ bearerToken: 'test' })
+    const client = new FiledGrTemplateSDKApi({ bearerToken: 'test' })
     expect(client.baseUrl).toBe(API_URLS[Environment.DEV])
   })
 
   test('Environment Selection Check', () => {
-    const devClient = new DigiCertApi({
+    const devClient = new FiledGrTemplateSDKApi({
       bearerToken: 'test',
       environment: Environment.DEV,
     })
     expect(devClient.baseUrl).toBe(API_URLS[Environment.DEV])
 
-    const testClient = new DigiCertApi({
+    const testClient = new FiledGrTemplateSDKApi({
       bearerToken: 'test',
       environment: Environment.TEST,
     })
     expect(testClient.baseUrl).toBe(API_URLS[Environment.TEST])
 
-    const prodClient = new DigiCertApi({
+    const prodClient = new FiledGrTemplateSDKApi({
       bearerToken: 'test',
       environment: Environment.PROD,
     })

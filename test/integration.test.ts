@@ -1,8 +1,8 @@
 import { Environment } from '../src/constants'
-import DigiCertApi from '../src/index'
+import FiledGrTemplateSDKApi from '../src/index'
 
-describe('DigiCert SDK Integration Tests', () => {
-  const sdk = new DigiCertApi({
+describe('FiledGrTemplateSDK SDK Integration Tests', () => {
+  const sdk = new FiledGrTemplateSDKApi({
     bearerToken: 'public',
     environment: Environment.DEV,
   })
