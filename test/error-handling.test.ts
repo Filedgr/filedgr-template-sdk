@@ -1,17 +1,17 @@
-import DigiCertApi from '../src/index'
+import FiledGrTemplateSDKApi from '../src/index'
 import { dataAttachmentData } from './data'
 
-describe('DigiCertApi', () => {
+describe('FiledGrTemplateSDKApi', () => {
   describe('getDataAttachment', () => {
     test('should return attachment data when API call is successful', async () => {
       const expectedData = dataAttachmentData
 
       // Mocking the API call
       jest
-        .spyOn(DigiCertApi.prototype, 'getDataAttachment')
+        .spyOn(FiledGrTemplateSDKApi.prototype, 'getDataAttachment')
         .mockResolvedValueOnce(expectedData)
 
-      const sdk = new DigiCertApi({
+      const sdk = new FiledGrTemplateSDKApi({
         bearerToken: 'test_token',
         baseUrl: 'https://example.com',
       })
@@ -23,10 +23,10 @@ describe('DigiCertApi', () => {
     test('should throw an error when API call returns a non-200 status code', async () => {
       // Mocking the API call
       jest
-        .spyOn(DigiCertApi.prototype, 'getDataAttachment')
+        .spyOn(FiledGrTemplateSDKApi.prototype, 'getDataAttachment')
         .mockRejectedValueOnce(new Error('Internal Server Error'))
 
-      const sdk = new DigiCertApi({
+      const sdk = new FiledGrTemplateSDKApi({
         bearerToken: 'test_token',
         baseUrl: 'https://example.com',
       })

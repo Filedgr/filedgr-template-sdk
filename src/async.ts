@@ -5,7 +5,7 @@ import {
   StreamAttachmentResponse,
 } from './types'
 
-export class DigiCert extends BaseAsync {
+export class FiledGrTemplateSDK extends BaseAsync {
   async getDataAttachment(
     dataAttachmentId: string
   ): Promise<GetDataAttachmentResponse> {

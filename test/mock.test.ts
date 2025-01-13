@@ -1,14 +1,14 @@
-import DigiCertApi from '../src/index'
+import FiledGrTemplateSDKApi from '../src/index'
 import { dataAttachmentData, streamAttachmentData } from './data'
 
-describe('DigiCert SDK Mock Tests', () => {
+describe('FiledGrTemplate SDK Mock Tests', () => {
   describe('getTokensAttachment', () => {
     test('should return mock stream attachment data', async () => {
       jest
-        .spyOn(DigiCertApi.prototype, 'getTokensAttachment')
+        .spyOn(FiledGrTemplateSDKApi.prototype, 'getTokensAttachment')
         .mockResolvedValueOnce(streamAttachmentData)
 
-      const sdk = new DigiCertApi({
+      const sdk = new FiledGrTemplateSDKApi({
         bearerToken: 'test_token',
       })
 
@@ -25,10 +25,10 @@ describe('DigiCert SDK Mock Tests', () => {
   describe('getDataAttachment', () => {
     test('should return mock attachment data', async () => {
       jest
-        .spyOn(DigiCertApi.prototype, 'getDataAttachment')
+        .spyOn(FiledGrTemplateSDKApi.prototype, 'getDataAttachment')
         .mockResolvedValueOnce(dataAttachmentData)
 
-      const sdk = new DigiCertApi({
+      const sdk = new FiledGrTemplateSDKApi({
         bearerToken: 'test_token',
       })
 

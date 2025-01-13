@@ -1,10 +1,10 @@
-import { DigiCert as DigiCertClass } from './async'
+import { FiledGrTemplateSDK as FiledGrTemplateSDKClass } from './async'
 import { BaseAsync } from './base'
 import { applyMixins } from './utils'
 
-class DigiCert extends BaseAsync {}
-interface DigiCert extends DigiCertClass {}
+class FiledGrTemplateSDK extends BaseAsync {}
+interface FiledGrTemplateSDK extends FiledGrTemplateSDKClass {}
 
-applyMixins(DigiCert, [DigiCertClass])
+applyMixins(FiledGrTemplateSDK, [FiledGrTemplateSDKClass])
 
-export default DigiCert
+export default FiledGrTemplateSDK
