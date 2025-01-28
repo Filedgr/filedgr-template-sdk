@@ -6,7 +6,7 @@ type Config = {
   baseUrl?: string
   environment?: Environment
 }
-
+//
 export abstract class BaseAsync {
   private bearerToken: string
   public baseUrl: string
