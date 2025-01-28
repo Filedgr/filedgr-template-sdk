@@ -26,13 +26,12 @@ yarn add @filedgr/filedgr-template-sdk
 You can use the public token 'public' to test the SDK:
 
 ```typescript
-import FiledgrTemplateApi from '@filedgr/filedgr-template-sdk';
-import { Environment } from '@filedgr/filedgr-template-sdk/constants';
+import FiledgrTemplateApi, { Constants, Types } from '@filedgr/filedgr-template-sdk';
 
 // Initialize the SDK with public token
 const client = new FiledgrTemplateApi({
   bearerToken: 'public',
-  environment: Environment.DEV // Optional: defaults to DEV
+  environment: Constants.Environment.DEV // Optional: defaults to DEV
 });
 
 // Get stream attachments
@@ -59,13 +58,13 @@ const defaultClient = new FiledgrTemplateApi({
 // Test environment
 const testClient = new FiledgrTemplateApi({
   bearerToken: 'public',
-  environment: Environment.TEST
+  environment: Constants.Environment.TEST
 });
 
 // Production environment
 const prodClient = new FiledgrTemplateApi({
   bearerToken: 'public', // Note: Public token might have limited access in production
-  environment: Environment.PROD
+  environment: Constants.Environment.PROD
 });
 
 // Custom API URL
@@ -91,7 +90,7 @@ const response = await client.getTokensAttachment({
 });
 ```
 
-Response type: `StreamAttachmentResponse`
+Response type: `Types.StreamAttachmentResponse`
 ```typescript
 interface StreamAttachmentResponse {
   total_records: number;
@@ -111,7 +110,7 @@ const client = new FiledgrTemplateApi({ bearerToken: 'public' });
 const response = await client.getDataAttachment('26eb8860-1c37-4978-8658-84270e65d11e');
 ```
 
-Response type: `GetDataAttachmentResponse`
+Response type: `Types.GetDataAttachmentResponse`
 ```typescript
 interface GetDataAttachmentResponse {
   id: string;
@@ -167,15 +166,15 @@ To contribute to the SDK:
 
 The SDK includes TypeScript definitions for all responses and inputs. Key types include:
 
-- `DataAttachmentStatus`
-- `FileAttachmentStatus`
-- `NetworkServerNames`
-- `StreamStatus`
-- `StreamProgressStep`
-- `GetDataAttachmentResponse`
-- `StreamAttachmentResponse`
-- `FileDto`
-- `StreamDto`
+- `Types.DataAttachmentStatus`
+- `Types.FileAttachmentStatus`
+- `Types.NetworkServerNames`
+- `Types.StreamStatus`
+- `Types.StreamProgressStep`
+- `Types.GetDataAttachmentResponse`
+- `Types.StreamAttachmentResponse`
+- `Types.FileDto`
+- `Types.StreamDto`
 
 ## Example Data
 
