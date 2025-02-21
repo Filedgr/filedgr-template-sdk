@@ -1,5 +1,7 @@
 import { BaseAsync } from './base'
 import {
+  DomainWhiteListRequest,
+  DomainWhiteListResponse,
   GetDataAttachmentResponse,
   StreamAttachmentInput,
   StreamAttachmentResponse,
@@ -25,5 +27,13 @@ export class FiledGrTemplateSDK extends BaseAsync {
         page: page,
       })}`
     )
+  }
+  async whiteListDomain(
+    data: DomainWhiteListRequest
+  ): Promise<DomainWhiteListResponse> {
+    return this.request<DomainWhiteListResponse>(`/subdomains`, {
+      method: 'POST',
+      body: JSON.stringify(data),
+    })
   }
 }
