@@ -98,3 +98,12 @@ export interface StreamAttachmentInput {
   pageSize?: string
   page?: string
 }
+export interface DomainWhiteListRequest {
+  nft_id: string
+  ledger: NetworkServerNames
+}
+export interface DomainWhiteListResponse {
+  nft_id: string
+  ledger: NetworkServerNames
+  signature: string
+}

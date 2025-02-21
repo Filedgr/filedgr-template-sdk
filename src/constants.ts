@@ -5,9 +5,9 @@ export enum Environment {
 }
 
 export const API_URLS: Record<Environment, string> = {
-  [Environment.DEV]: 'https://digicert-api.dev.filedgr.network',
-  [Environment.TEST]: 'https://digicert-api.test.filedgr.network',
-  [Environment.PROD]: 'https://digicert-api.filedgr.network',
+  [Environment.DEV]: 'https://template-api.dev.filedgr.network',
+  [Environment.TEST]: 'https://template-api.test.filedgr.network',
+  [Environment.PROD]: 'https://template-api.filedgr.network',
 }
 
 export const DEFAULT_ENV = Environment.DEV
