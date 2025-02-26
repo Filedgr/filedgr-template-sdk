@@ -41,6 +41,7 @@ export interface GetDataAttachmentResponse {
   size?: number | null
   stream: StreamDto | null
   files: FileDto[] | null
+  public_vault: boolean
   file_count: number
   config?: {
     is_permissioned: boolean
