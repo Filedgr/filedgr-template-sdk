@@ -8,18 +8,18 @@ type Config = {
 }
 //
 export abstract class BaseAsync {
-  private bearerToken: string
+  protected bearerToken: string
   public baseUrl: string
+  public environment: Environment
 
   constructor(config: Config) {
     this.bearerToken = config.bearerToken
+    this.environment = config.environment || DEFAULT_ENV
 
     if (config.baseUrl) {
       this.baseUrl = config.baseUrl
-    } else if (config.environment) {
-      this.baseUrl = API_URLS[config.environment]
     } else {
-      this.baseUrl = API_URLS[DEFAULT_ENV]
+      this.baseUrl = API_URLS[this.environment]
     }
   }
 

@@ -168,3 +168,20 @@ export interface VaultModel {
   }
   vault_permission_type: 'VIEWER' | 'EDITOR' | 'ADMIN' | 'OWNER'
 }
+
+export interface IPFSFileDownloadOptions {
+  cid: string
+  filename: string
+  mimeType: string
+  isPublic: boolean
+  ledgerInfo?: {
+    tx_hash: string
+    ledger: NetworkServerNames
+  }
+}
+
+export interface IPFSFileResponse {
+  blob: Blob
+  filename: string
+  mimeType: string
+}
