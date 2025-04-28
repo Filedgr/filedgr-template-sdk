@@ -76,6 +76,59 @@ const customClient = new FiledgrTemplateApi({
 
 ## API Reference
 
+### getVaultByLedger
+
+Retrieves vault information for a given vault network ID and ledger.
+
+```typescript
+const client = new FiledgrTemplateApi({ bearerToken: 'public' });
+
+const response = await client.getVaultByLedger(
+  'vault-network-id',
+  Types.NetworkServerNames.XRPL
+);
+```
+
+Response type: `Types.VaultModel`
+```typescript
+interface VaultModel {
+  id: string;
+  created_at: string;
+  name: string;
+  description: string;
+  template_id: string;
+  status: VaultStatus;
+  ledger: string;
+  // ... other fields
+}
+```
+
+### IPFS File Downloads
+
+The SDK provides methods to download files from IPFS, supporting both public and private resources.
+
+```typescript
+// Download and save a public file
+await client.downloadAndSaveIPFSFile({
+  cid: 'your-cid',
+  filename: 'document.pdf',
+  mimeType: 'application/pdf',
+  isPublic: true
+});
+
+// Download and save a private file with ledger info
+await client.downloadAndSaveIPFSFile({
+  cid: 'your-cid',
+  filename: 'private-document.pdf',
+  mimeType: 'application/pdf',
+  isPublic: false,
+  ledgerInfo: {
+    tx_hash: 'transaction-hash',
+    ledger: Types.NetworkServerNames.XRPL
+  }
+});
+```
+
 ### getTokensAttachment
 
 Retrieves stream attachments for a given token code.
@@ -123,11 +176,20 @@ interface GetDataAttachmentResponse {
 
 ## Environment Variables
 
-The SDK supports three environments:
+The SDK supports three environments with their respective API and IPFS endpoints:
 
-- Development (DEV): `https://template-api.dev.filedgr.network`
-- Testing (TEST): `https://template-api.test.filedgr.network`
-- Production (PROD): `https://template-api.filedgr.network`
+- Development (DEV):
+  - API: `https://template-api.dev.filedgr.network`
+  - Public IPFS: `ipfs.pub.dev.filedgr.network`
+  - Private IPFS: `ipfs.priv.dev.filedgr.network`
+- Testing (TEST):
+  - API: `https://template-api.test.filedgr.network`
+  - Public IPFS: `ipfs.pub.test.filedgr.network`
+  - Private IPFS: `ipfs.priv.test.filedgr.network`
+- Production (PROD):
+  - API: `https://template-api.filedgr.network`
+  - Public IPFS: `ipfs.pub.filedgr.network`
+  - Private IPFS: `ipfs.priv.filedgr.network`
 
 ## Error Handling
 
