@@ -11,7 +11,7 @@ For comprehensive documentation, please visit: https://filedgr-docs.netlify.app/
 - TypeScript support with full type definitions
 - Environment-specific configurations (dev, test, prod)
 - Promise-based async API
-- Public access token available for testing
+- Public access token available for testing.
 
 ## Installation
 
