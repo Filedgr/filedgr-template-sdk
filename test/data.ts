@@ -5,6 +5,7 @@ import {
 
 const dataAttachmentData: GetDataAttachmentResponse = {
   id: 'f9c5cec5-cfb3-43d3-953b-796e185de0f2',
+  public_vault: true,
   created_at: '2024-03-19T17:38:11.548916',
   name: 'Car Name',
   status: 'FILEDGR_DATA_ATTACHMENT_COMPLETED',
@@ -77,6 +78,7 @@ const streamAttachmentData: StreamAttachmentResponse = {
   content: [
     {
       id: 'f9c5cec5-cfb3-43d3-953b-796e185de0f2',
+      public_vault: true,
       name: 'Car Name',
       created_at: '2024-03-19T17:38:11.548916',
       status: 'FILEDGR_DATA_ATTACHMENT_COMPLETED',
