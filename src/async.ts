@@ -3,8 +3,10 @@ import {
   DomainWhiteListRequest,
   DomainWhiteListResponse,
   GetDataAttachmentResponse,
+  NetworkServerNames,
   StreamAttachmentInput,
   StreamAttachmentResponse,
+  VaultModel,
 } from './types'
 
 export class FiledGrTemplateSDK extends BaseAsync {
@@ -35,5 +37,14 @@ export class FiledGrTemplateSDK extends BaseAsync {
       method: 'POST',
       body: JSON.stringify(data),
     })
+  }
+
+  async getVaultByLedger(
+    vaultNetworkId: string,
+    ledger: NetworkServerNames
+  ): Promise<VaultModel> {
+    return this.request<VaultModel>(
+      `/vaults/${vaultNetworkId}/ledger/${ledger}`
+    )
   }
 }
