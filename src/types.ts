@@ -108,3 +108,63 @@ export interface DomainWhiteListResponse {
   ledger: NetworkServerNames
   signature: string
 }
+
+export type VaultStatus =
+  | 'FILEDGR_RECEIVED'
+  | 'FILEDGR_REVIEWED'
+  | 'DLT_VAULT_ID_REQUESTED'
+  | 'DLT_MINTED'
+  | 'FILEDGR_VAULT_COMPLETED'
+
+export interface VaultProgressStep {
+  step: number
+  status: VaultStatus
+  completed_at: string | null
+}
+
+export interface StreamModel {
+  id: string
+  created_at: string
+  asset_code: string | null
+  description: string
+  ledger: NetworkServerNames
+  tx_hash: string | null
+  status: StreamStatus
+  issuer: string | null
+  distribution_wallet: string | null
+  mapping: string
+  metadata_cid: string | null
+  progress: StreamProgressStep[]
+}
+
+export interface VaultModel {
+  id: string
+  created_at: string
+  name: string
+  description: string
+  template_id: string
+  status: VaultStatus
+  ledger: string
+  tx_hash: string | null
+  nft_network_issuer: string | null
+  nft_network_owner: string | null
+  nft_network_id: string | null
+  cid: string | null
+  image_cid: string | null
+  default_image_cid: string | null
+  metadata_cid: string | null
+  streams: StreamModel[]
+  public: boolean
+  archived: boolean
+  json_payload: any | null
+  image_upload_url: string | null
+  custom_image: boolean
+  progress: VaultProgressStep[]
+  config?: {
+    is_permissioned: boolean
+    is_searchable: boolean
+    is_ai_ready: boolean
+    short_url: string | null
+  }
+  vault_permission_type: 'VIEWER' | 'EDITOR' | 'ADMIN' | 'OWNER'
+}
