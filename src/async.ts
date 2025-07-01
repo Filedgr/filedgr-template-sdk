@@ -1,8 +1,15 @@
 import { BaseAsync } from './base'
-import { IPFS_URLS } from './constants'
+import {
+  IPFS_URLS,
+  getExplorerConfig,
+  getNFTUrl,
+  getTransactionUrl,
+} from './constants'
 import {
   DomainWhiteListRequest,
   DomainWhiteListResponse,
+  ExplorerError,
+  ExplorerUrlResult,
   GetDataAttachmentResponse,
   IPFSFileDownloadOptions,
   IPFSFileResponse,
@@ -33,6 +40,7 @@ export class FiledGrTemplateSDK extends BaseAsync {
       })}`
     )
   }
+
   async whiteListDomain(
     data: DomainWhiteListRequest
   ): Promise<DomainWhiteListResponse> {
@@ -116,5 +124,213 @@ export class FiledGrTemplateSDK extends BaseAsync {
     // Cleanup
     document.body.removeChild(downloadLink)
     window.URL.revokeObjectURL(downloadUrl)
+  }
+
+  // ========== EXPLORER METHODS ==========
+
+  /**
+   * Get the explorer URL for a transaction
+   * @param txHash - Transaction hash
+   * @param ledger - Network ledger name
+   * @param isTestnet - Whether to use testnet explorer (default: false)
+   * @returns Explorer URL result or error
+   */
+  getTransactionExplorerUrl(
+    txHash: string,
+    ledger: NetworkServerNames,
+    isTestnet: boolean = false
+  ): ExplorerUrlResult | ExplorerError {
+    try {
+      const url = getTransactionUrl(txHash, ledger, isTestnet)
+      const config = getExplorerConfig(ledger, isTestnet)
+
+      if (!url || !config) {
+        return {
+          success: false,
+          error: `No explorer configuration found for ledger: ${ledger}`,
+          ledger,
+        }
+      }
+
+      return {
+        url,
+        networkName: config.name,
+        success: true,
+      }
+    } catch (error) {
+      return {
+        success: false,
+        error: error instanceof Error ? error.message : 'Unknown error',
+        ledger,
+      }
+    }
+  }
+
+  /**
+   * Get the explorer URL for an NFT
+   * @param nftId - NFT ID or token ID
+   * @param ledger - Network ledger name
+   * @param isTestnet - Whether to use testnet explorer (default: false)
+   * @returns Explorer URL result or error
+   */
+  getNFTExplorerUrl(
+    nftId: string,
+    ledger: NetworkServerNames,
+    isTestnet: boolean = false
+  ): ExplorerUrlResult | ExplorerError {
+    try {
+      const url = getNFTUrl(nftId, ledger, isTestnet)
+      const config = getExplorerConfig(ledger, isTestnet)
+
+      if (!url || !config) {
+        return {
+          success: false,
+          error: `No explorer configuration found for ledger: ${ledger}`,
+          ledger,
+        }
+      }
+
+      return {
+        url,
+        networkName: config.name,
+        success: true,
+      }
+    } catch (error) {
+      return {
+        success: false,
+        error: error instanceof Error ? error.message : 'Unknown error',
+        ledger,
+      }
+    }
+  }
+
+  /**
+   * Open transaction in blockchain explorer (browser only)
+   * @param txHash - Transaction hash
+   * @param ledger - Network ledger name
+   * @param isTestnet - Whether to use testnet explorer (default: false)
+   * @returns Promise<boolean> - Success status
+   */
+  async viewTransactionInExplorer(
+    txHash: string,
+    ledger: NetworkServerNames,
+    isTestnet: boolean = false
+  ): Promise<boolean> {
+    // Check if we're in a browser environment
+    if (typeof window === 'undefined') {
+      console.warn(
+        'viewTransactionInExplorer can only be used in browser environments'
+      )
+      return false
+    }
+
+    const result = this.getTransactionExplorerUrl(txHash, ledger, isTestnet)
+
+    if (!result.success) {
+      console.error(
+        'Failed to get explorer URL:',
+        (result as ExplorerError).error
+      )
+      return false
+    }
+
+    try {
+      window.open(
+        (result as ExplorerUrlResult).url,
+        '_blank',
+        'noopener,noreferrer'
+      )
+      return true
+    } catch (error) {
+      console.error('Failed to open explorer:', error)
+      return false
+    }
+  }
+
+  /**
+   * Open NFT in blockchain explorer (browser only)
+   * @param nftId - NFT ID or token ID
+   * @param ledger - Network ledger name
+   * @param isTestnet - Whether to use testnet explorer (default: false)
+   * @returns Promise<boolean> - Success status
+   */
+  async viewNFTInExplorer(
+    nftId: string,
+    ledger: NetworkServerNames,
+    isTestnet: boolean = false
+  ): Promise<boolean> {
+    // Check if we're in a browser environment
+    if (typeof window === 'undefined') {
+      console.warn('viewNFTInExplorer can only be used in browser environments')
+      return false
+    }
+
+    const result = this.getNFTExplorerUrl(nftId, ledger, isTestnet)
+
+    if (!result.success) {
+      console.error(
+        'Failed to get explorer URL:',
+        (result as ExplorerError).error
+      )
+      return false
+    }
+
+    try {
+      window.open(
+        (result as ExplorerUrlResult).url,
+        '_blank',
+        'noopener,noreferrer'
+      )
+      return true
+    } catch (error) {
+      console.error('Failed to open explorer:', error)
+      return false
+    }
+  }
+
+  /**
+   * Open vault's transaction in blockchain explorer (browser only)
+   * Convenience method that uses vault data to open the transaction
+   * @param vault - Vault model containing tx_hash and ledger
+   * @param isTestnet - Whether to use testnet explorer (default: false)
+   * @returns Promise<boolean> - Success status
+   */
+  async viewVaultTransactionInExplorer(
+    vault: VaultModel,
+    isTestnet: boolean = false
+  ): Promise<boolean> {
+    if (!vault.tx_hash) {
+      console.error('Vault does not have a transaction hash')
+      return false
+    }
+
+    return this.viewTransactionInExplorer(
+      vault.tx_hash,
+      vault.ledger as NetworkServerNames,
+      isTestnet
+    )
+  }
+
+  /**
+   * Open vault's NFT in blockchain explorer (browser only)
+   * Convenience method that uses vault data to open the NFT
+   * @param vault - Vault model containing nft_network_id and ledger
+   * @param isTestnet - Whether to use testnet explorer (default: false)
+   * @returns Promise<boolean> - Success status
+   */
+  async viewVaultNFTInExplorer(
+    vault: VaultModel,
+    isTestnet: boolean = false
+  ): Promise<boolean> {
+    if (!vault.nft_network_id) {
+      console.error('Vault does not have an NFT network ID')
+      return false
+    }
+
+    return this.viewNFTInExplorer(
+      vault.nft_network_id,
+      vault.ledger as NetworkServerNames,
+      isTestnet
+    )
   }
 }
