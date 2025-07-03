@@ -185,3 +185,21 @@ export interface IPFSFileResponse {
   filename: string
   mimeType: string
 }
+export interface ExplorerViewOptions {
+  txHash?: string
+  nftId?: string
+  ledger: NetworkServerNames
+  isTestnet?: boolean
+}
+
+export interface ExplorerUrlResult {
+  url: string
+  networkName: string
+  success: boolean
+}
+
+export interface ExplorerError {
+  success: false
+  error: string
+  ledger: string
+}
