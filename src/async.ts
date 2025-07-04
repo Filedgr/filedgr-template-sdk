@@ -6,6 +6,8 @@ import {
   getTransactionUrl,
 } from './constants'
 import {
+  AddDataAttachmentRequest,
+  AddDataAttachmentResponse,
   DomainWhiteListRequest,
   DomainWhiteListResponse,
   ExplorerError,
@@ -26,6 +28,15 @@ export class FiledGrTemplateSDK extends BaseAsync {
     return this.request<GetDataAttachmentResponse>(
       `/attachments/${dataAttachmentId}`
     )
+  }
+
+  async createDataAttachment(
+    data: AddDataAttachmentRequest
+  ): Promise<AddDataAttachmentResponse> {
+    return this.request<AddDataAttachmentResponse>('/attachments', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    })
   }
 
   async getTokensAttachment({

@@ -99,10 +99,12 @@ export interface StreamAttachmentInput {
   pageSize?: string
   page?: string
 }
+
 export interface DomainWhiteListRequest {
   nft_id: string
   ledger: NetworkServerNames
 }
+
 export interface DomainWhiteListResponse {
   nft_id: string
   ledger: NetworkServerNames
@@ -185,6 +187,7 @@ export interface IPFSFileResponse {
   filename: string
   mimeType: string
 }
+
 export interface ExplorerViewOptions {
   txHash?: string
   nftId?: string
@@ -202,4 +205,83 @@ export interface ExplorerError {
   success: false
   error: string
   ledger: string
+}
+
+// New types for data attachment creation
+export interface AddDataAttachmentConfig {
+  short_url?: boolean
+}
+
+export interface AddDataAttachmentRequest {
+  name: string
+  description?: string | null
+  stream_id: string
+  ledger: NetworkServerNames
+  filename?: string | null
+  upload_as_zip?: boolean
+  config?: AddDataAttachmentConfig | null
+}
+
+export interface DataAttachmentProgressItem {
+  step: number
+  status: DataAttachmentStatus
+  completed_at?: string | null
+}
+
+export interface DataAttachmentConfigDto {
+  short_url?: string | null
+}
+
+export interface VaultDto {
+  id: string
+  created_at: string
+  name: string
+  description?: string | null
+  template_id: string
+  status: VaultStatus
+  ledger: NetworkServerNames
+  tx_hash?: string | null
+  nft_network_issuer?: string | null
+  nft_network_owner?: string | null
+  nft_network_id?: string | null
+  cid?: string | null
+  image_cid?: string | null
+  default_image_cid?: string | null
+  metadata_cid?: string | null
+  streams?: StreamDto[] | null
+  json_payload?: string | null
+  image_upload_url?: string | null
+  custom_image?: boolean | null
+  vault_permission_type?:
+    | 'OWNER'
+    | 'ADMIN'
+    | 'EDITOR'
+    | 'VIEWER'
+    | 'CUSTOM'
+    | null
+  config?: DataAttachmentConfigDto | null
+  progress?: DataAttachmentProgressItem[] | null
+  archived?: boolean | null
+}
+
+export interface AddDataAttachmentResponse {
+  id: string
+  name: string
+  description?: string | null
+  created_at: string
+  ledger: NetworkServerNames
+  status: DataAttachmentStatus
+  presigned_url?: string | null
+  public_vault?: boolean | null
+  stream_id: string
+  filename?: string | null
+  tx_hash?: string | null
+  upload_as_zip: boolean
+  size?: number | null
+  stream?: StreamDto | null
+  vault?: VaultDto | null
+  file_count?: number | null
+  files?: FileDto[] | null
+  progress?: DataAttachmentProgressItem[] | null
+  config?: DataAttachmentConfigDto | null
 }
