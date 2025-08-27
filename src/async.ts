@@ -18,6 +18,7 @@ import {
   NetworkServerNames,
   StreamAttachmentInput,
   StreamAttachmentResponse,
+  UserDataModel,
   VaultModel,
 } from './types'
 
@@ -68,6 +69,14 @@ export class FiledGrTemplateSDK extends BaseAsync {
     return this.request<VaultModel>(
       `/vaults/${vaultNetworkId}/ledger/${ledger}`
     )
+  }
+
+  async getUserInfo(invitationCode?: string): Promise<UserDataModel> {
+    const endpoint = invitationCode
+      ? `/users?${new URLSearchParams({ invitation_id: invitationCode })}`
+      : '/users'
+
+    return this.request<UserDataModel>(endpoint)
   }
 
   private getIPFSUrl(cid: string, isPublic: boolean): string {
