@@ -285,3 +285,36 @@ export interface AddDataAttachmentResponse {
   progress?: DataAttachmentProgressItem[] | null
   config?: DataAttachmentConfigDto | null
 }
+
+// User Data Types
+export interface UserCredentialModel {
+  id: string
+  created_at: string
+  type: 'WALLET' | 'API_KEY'
+  validated: boolean
+  identity_provider: string
+  key: string
+  secret: null
+  ledger: string
+}
+
+export interface UserEntityModel {
+  id: string
+  created_at: string
+  name: string
+  description: string
+  type: string
+}
+
+export interface UserDataModel {
+  id: string
+  first_name: null
+  last_name: null
+  username: string
+  user_profile_picture: boolean
+  created_at: string
+  entities: UserEntityModel[]
+  credentials: UserCredentialModel[]
+  image_upload_url: string
+  image_download_url: null
+}
