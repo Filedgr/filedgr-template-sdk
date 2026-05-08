@@ -1,0 +1,32 @@
+name: PR ISO Compliance
+
+# ISO 27001 / SOC 2 control: enforce automated unit-test gate on every PR.
+# The job name `iso-compliance` is the status-check context required by the
+# org-level branch ruleset.
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  iso-compliance:
+    name: iso-compliance
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci || npm install
+
+      - name: Run unit tests
+        run: npm test
