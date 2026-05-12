@@ -40,7 +40,7 @@
     "prettier": "^3.2.5",
     "semantic-release": "22.0.2",
     "ts-jest": "^29.1.2",
-    "typescript": "^5.4.2"
+    "typescript": "^6.0.3"
   },
   "dependencies": {
     "cross-fetch": "^4.0.0"
