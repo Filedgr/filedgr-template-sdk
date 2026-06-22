@@ -1,6 +1,6 @@
 {
   "name": "@filedgr/filedgr-template-sdk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "SDK to allow simple access to Filedgr attested data, using templates",
   "main": "dist/index.js",
   "module": "dist/index.m.js",
