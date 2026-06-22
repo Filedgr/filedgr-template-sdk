@@ -38,12 +38,15 @@
     "lint-staged": "^15.2.2",
     "microbundle": "^0.15.1",
     "prettier": "^3.2.5",
-    "semantic-release": "22.0.2",
+    "semantic-release": "^25.0.5",
     "ts-jest": "^29.1.2",
     "typescript": "^5.4.2"
   },
   "dependencies": {
     "cross-fetch": "^4.0.0"
+  },
+  "overrides": {
+    "tmp": "^0.2.4"
   },
   "husky": {
     "hooks": {
