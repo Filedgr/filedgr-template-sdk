@@ -1,6 +1,6 @@
 {
   "name": "@filedgr/filedgr-template-sdk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "SDK to allow simple access to Filedgr attested data, using templates",
   "main": "dist/index.js",
   "module": "dist/index.m.js",
@@ -20,7 +20,7 @@
     "package.json"
   ],
   "scripts": {
-    "build": "rm -rf dist && microbundle --tsconfig tsconfig.json --no-sourcemap",
+    "build": "node build.mjs",
     "dev": "nodemon -e js,ts --watch src --exec \"npm run build\"",
     "format:fix": "prettier --write './**/*.ts'",
     "test": "env NODE_ENV=test jest",
@@ -33,17 +33,33 @@
   "devDependencies": {
     "@types/jest": "^30.0.0",
     "cz-conventional-changelog": "^3.3.0",
+    "esbuild": "^0.28.1",
     "husky": "^9.1.7",
     "jest": "^30.4.2",
     "lint-staged": "^15.2.2",
-    "microbundle": "^0.15.1",
     "prettier": "^3.2.5",
-    "semantic-release": "22.0.2",
+    "semantic-release": "^25.0.5",
     "ts-jest": "^29.1.2",
     "typescript": "^5.4.2"
   },
   "dependencies": {
     "cross-fetch": "^4.0.0"
+  },
+  "overrides": {
+    "tmp": "^0.2.7",
+    "lodash": "^4.18.1",
+    "svgo": "^2.8.2",
+    "serialize-javascript": "^7.0.6",
+    "braces": "^3.0.3",
+    "ejs": "^3.1.10",
+    "postcss": "^8.5.15",
+    "rollup": "^2.80.0",
+    "minimatch": "^9.0.9",
+    "js-yaml": "^4.2.0",
+    "micromatch": "^4.0.8",
+    "ajv": "^8.20.0",
+    "@babel/runtime": "^7.26.10",
+    "yaml": "^2.9.0"
   },
   "husky": {
     "hooks": {
