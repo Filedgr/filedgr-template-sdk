@@ -59,7 +59,8 @@
     "micromatch": "^4.0.8",
     "ajv": "^8.20.0",
     "@babel/runtime": "^7.26.10",
-    "yaml": "^2.9.0"
+    "yaml": "^2.9.0",
+    "npm": "^11.21.1"
   },
   "husky": {
     "hooks": {
